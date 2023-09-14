@@ -1,0 +1,1 @@
+export { FooterLoading } from './Loading';

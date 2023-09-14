@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    outline: 1px solid transparent;
+
+    padding: 0p;
+    margin: 0px;
+
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+  }
+
+  button,
+  a {
+    cursor: pointer;
+  }
+
+  button,
+  input {
+    background-color: transparent;
+    border: none;
+  }
+
+  button:disabled,
+  input:disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  body {
+    width: max-content;
+    height: max-content;
+
+    background-color: #3e3e3e;
+
+    overflow: hidden;
+  }
+
+  #root {
+    width: max-content;
+    height: max-content;
+  }
+}

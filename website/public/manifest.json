@@ -1,0 +1,9 @@
+{
+    "name": "Book bag",
+    "short_name": "Book bag",
+    "theme_color": "#3e3e3e",
+    "background_color": "#3e3e3e",
+    "display": "browser",
+    "orientation": "portrait",
+    "start_url": "/"
+}
