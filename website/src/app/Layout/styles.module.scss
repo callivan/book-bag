@@ -1,0 +1,38 @@
+.layout {
+    @apply relative;
+    @apply flex flex-col;
+    @apply w-screen h-screen;
+
+    &__bg {
+        @apply absolute top-[0px] left-[0px];
+        @apply w-full h-full;
+    }
+
+    &__img {
+        @apply w-full h-full;
+    }
+
+    &__wrapper {
+        @apply flex-shrink-0;
+        @apply w-full h-max;
+        @apply backdrop-blur-custom;
+        @apply bg-gray-bg;
+        @apply px-3 py-2;
+        //Mobile big
+        @apply s:px-2;
+        //Mobile small
+        @apply xs:px-1 xs:py-1;
+    }
+
+    &__blur-footer {
+        @apply w-full h-3;
+        //Mobile big
+        @apply s:h-2;
+        //Mobile small
+        @apply xs:h-1;
+
+        @apply flex-shrink-0;
+        @apply backdrop-blur-custom;
+        @apply bg-gray-bg;
+    }
+}

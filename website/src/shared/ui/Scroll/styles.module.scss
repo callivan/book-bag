@@ -1,0 +1,42 @@
+.scroll {
+    @apply w-full h-full;
+    @apply mr-1;
+
+    &[data-off='false'] {
+        @apply overflow-auto;
+    }
+
+    &[data-off='true'] {
+        @apply overflow-hidden;
+    }
+
+    &__wrapper {
+        @apply w-full h-full;
+    }
+
+    @media screen and not (hover: none) {
+        & {
+            scrollbar-width: thin;
+            scrollbar-color: #ececec transparent;
+        }
+
+        &::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+            margin-block: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #ececec;
+            border-radius: 10px;
+        }
+    }
+}
+
+.wrapper {
+    @apply w-full h-full;
+}

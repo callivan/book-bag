@@ -1,12 +1,12 @@
 interface ISetPositionProps {
   portalId: string;
   containerElement: HTMLElement | null;
+  wrapperElement: HTMLElement | null;
 }
 
-export function setPosition({ portalId, containerElement }: ISetPositionProps) {
+export function setPosition({ portalId, containerElement, wrapperElement }: ISetPositionProps) {
   if (!containerElement) return;
 
-  const wrapperElement = containerElement.querySelector<HTMLDivElement>('.wrapper');
   const portal = document.querySelector<HTMLDivElement>('#' + portalId);
 
   if (!portal || !wrapperElement) return;

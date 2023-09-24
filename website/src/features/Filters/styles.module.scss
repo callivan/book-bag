@@ -1,0 +1,33 @@
+.filter {
+    @apply flex items-center justify-end flex-grow gap-x-1 gap-y-4 flex-wrap-reverse;
+    //Mobile big
+    @apply s:items-start s:flex-col-reverse;
+
+    @apply w-full;
+
+    &__wrapper {
+        @apply flex items-center justify-end flex-grow;
+        //Mobile big
+        @apply s:flex-grow-0;
+
+        @apply max-w-[440px] min-w-[300px];
+        //Mobile big
+        @apply s:min-w-full s:max-w-full;
+    }
+
+    &__select {
+        @apply flex-shrink;
+        //Mobile big
+        @apply s:flex-grow;
+
+        @apply w-full max-w-[220px];
+        //Mobile big
+        @apply s:max-w-full;
+    }
+
+    &__search {
+        @apply w-[220px];
+        //Mobile big
+        @apply s:w-full;
+    }
+}

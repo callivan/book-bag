@@ -1,4 +1,3 @@
-import { ErrorLoading } from '@pages';
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -16,7 +15,7 @@ export function App() {
           path: '/',
           element: <Layout />,
           errorElement: (
-            <Suspense fallback={<ErrorLoading />}>
+            <Suspense>
               <PageError text="Page not found! 😩" />
             </Suspense>
           ),
@@ -42,7 +41,7 @@ export function App() {
         {
           path: '/serverError',
           element: (
-            <Suspense fallback={<ErrorLoading />}>
+            <Suspense>
               <PageError text="Server error! 😩" />
             </Suspense>
           ),

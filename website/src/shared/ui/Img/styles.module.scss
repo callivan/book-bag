@@ -1,0 +1,24 @@
+.img {
+    @apply relative;
+
+    &__wrapper {
+        @apply absolute top-[0px] left-[0px];
+        @apply w-full h-full;
+        @apply backdrop-blur-custom;
+        @apply transition-opacity duration-200;
+        @apply bg-gray-bg;
+
+        &[data-hide='false'] {
+            @apply opacity-100;
+        }
+
+        &[data-hide='true'] {
+            @apply opacity-0;
+        }
+    }
+
+    &__content {
+        @apply object-cover object-center;
+        @apply w-full h-full;
+    }
+}

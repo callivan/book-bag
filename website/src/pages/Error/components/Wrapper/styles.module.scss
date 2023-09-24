@@ -1,0 +1,19 @@
+.wrapper {
+    @apply relative;
+    @apply w-screen h-screen;
+}
+
+.bg {
+    @apply absolute top-[0px] left-[0px];
+    @apply w-full h-full;
+
+    &__img {
+        @apply w-full h-full;
+    }
+}
+
+.container {
+    @apply w-full h-full;
+    @apply backdrop-blur-custom;
+    @apply bg-gray-bg;
+}

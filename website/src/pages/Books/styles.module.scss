@@ -1,0 +1,19 @@
+.books {
+    @apply border border-solid border-gray-dark;
+    @apply w-full h-full;
+
+    &__wrapper {
+        @apply flex flex-col gap-4;
+        //Mobile big
+        @apply s:gap-3;
+
+        @apply w-full max-w-[1440px] h-full;
+        @apply px-2 pt-4 pb-2 mx-auto;
+        //Mobile big
+        @apply s:pt-3;
+    }
+
+    &__footer {
+        @apply w-full h-max;
+    }
+}

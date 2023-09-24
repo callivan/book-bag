@@ -1,0 +1,119 @@
+.select {
+    @apply flex flex-col;
+
+    &__button {
+        @apply relative;
+        @apply flex items-center justify-between gap-1;
+        @apply w-full h-max;
+        @apply transition-colors duration-200;
+        @apply font-regular text-body1;
+        @apply pl-[12px] pr-1 py-1;
+
+        &[data-open='false'] {
+            @apply stroke-gray-medium text-gray-medium;
+        }
+
+        &[data-open='true'] {
+            @apply bg-gray-dark text-gray-light stroke-gray-light;
+        }
+
+        &:hover {
+            @apply bg-gray-dark;
+            @apply stroke-gray-light;
+            @apply text-gray-light;
+        }
+    }
+
+    &__label {
+        @apply absolute;
+        @apply origin-top-left scale-[0.65] translate-y-[-12px];
+        @apply whitespace-pre-wrap break-all text-left;
+        @apply transition-opacity duration-200;
+        @apply w-full;
+
+        &[data-show='false'] {
+            @apply opacity-0;
+        }
+
+        &[data-show='true'] {
+            @apply opacity-100;
+        }
+    }
+
+    &__text {
+        @apply whitespace-pre-wrap break-all text-left;
+        @apply w-full;
+    }
+
+    &__chevron {
+        @apply w-max h-max;
+        @apply pointer-events-none;
+        @apply flex-shrink-0;
+        @apply transition-transform duration-200;
+
+        &[data-open='false'] {
+            @apply rotate-0;
+        }
+
+        &[data-open='true'] {
+            @apply rotate-180;
+        }
+    }
+
+    &__wrapper {
+        @apply w-full;
+    }
+
+    &__content {
+        @apply overflow-y-scroll overflow-x-hidden;
+        @apply w-full max-h-[300px];
+        @apply translate-x-2;
+        @apply bg-gray-bg;
+        @apply backdrop-blur-custom;
+        @apply transition-opacity duration-300;
+        @apply py-1;
+
+        &[data-open='false'] {
+            @apply pointer-events-none;
+        }
+
+        &[data-open='true'] {
+            @apply animate-[movingFromRight_0.3s_ease-in-out_forwards];
+        }
+
+        &[data-animation='true'] {
+            @apply animate-[movingLeft_0.3s_ease-in-out_forwards];
+        }
+
+        @media screen and not (hover: none) {
+            & {
+                scrollbar-width: thin;
+                scrollbar-color: #ececec transparent;
+            }
+
+            &::-webkit-scrollbar {
+                width: 4px;
+                height: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+                margin-block: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #ececec;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    &__list {
+        @apply flex flex-col;
+        @apply w-full h-max;
+    }
+
+    &__item {
+        @apply w-full h-max;
+    }
+}

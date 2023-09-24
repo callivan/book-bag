@@ -1,0 +1,42 @@
+.footer {
+    @apply w-full h-max;
+    @apply flex items-baseline justify-between gap-1;
+    @apply border-t border-solid border-gray-clean;
+    @apply pt-2;
+
+    &__counter {
+        @apply tracking-[5%];
+        //Mobile big
+        @apply s:text-body3;
+    }
+}
+
+.load-more-md .load-more-sm {
+    @apply transition-opacity duration-200;
+
+    &[data-load='false'] {
+        @apply pointer-events-none;
+        @apply opacity-0;
+    }
+
+    &[data-load='true'] {
+        @apply pointer-events-auto;
+        @apply opacity-100;
+    }
+}
+
+.load-more-md {
+    @apply flex;
+    //Mobile big
+    @apply s:hidden;
+}
+
+.load-more-sm {
+    @apply hidden;
+    //Mobile big
+    @apply s:flex;
+}
+
+.icon {
+    @apply -rotate-45;
+}

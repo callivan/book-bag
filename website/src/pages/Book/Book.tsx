@@ -1,13 +1,13 @@
 import { Error } from '@entities';
 import { Scroll } from '@shared/ui';
 import { useGetBookQuery } from '@store';
-import classNames from 'classnames';
 import { lazy, Suspense, useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { ContentLoading } from './components';
+import styles from './styles.module.scss';
 
 const Content = lazy(() => import('./components/Content/Content'));
 
@@ -41,18 +41,7 @@ export default function Book() {
         <meta name="twitter:title" content={`Book bag | ${title}`} />
       </Helmet>
 
-      <div
-        className={classNames(
-          //Effect
-          'backdrop-blur-custom',
-
-          //Color
-          'bg-gray-bg',
-
-          ///Size
-          'w-full h-full',
-        )}
-      >
+      <div className={styles.book}>
         <Scroll>
           <>
             {data ? (

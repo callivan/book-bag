@@ -1,10 +1,9 @@
-import './popup.css';
-
 import { IconBurger, IconCross } from '@shared/icons';
 import { Button, Portal, Scroll } from '@shared/ui';
 import classNames from 'classnames';
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
+import styles from './styles.module.scss';
 import { IPopuRefProps, IPoupOwnProps } from './types/component';
 
 const Popup = forwardRef<IPopuRefProps, IPoupOwnProps>(function Popup(
@@ -45,53 +44,15 @@ const Popup = forwardRef<IPopuRefProps, IPoupOwnProps>(function Popup(
         }, 200);
       }, 200);
   }, [animationEnd]);
+
   return (
     <>
       <Button
         icon={
           (buttonProps && buttonProps.icon) || (
-            <div
-              className={classNames(
-                //Position
-                'relative',
-
-                //Flex
-                'flex items-center justify-center',
-
-                //Size
-                'w-full h-full',
-
-                //Visibility
-                'overflow-hidden',
-              )}
-            >
-              <IconBurger
-                width="100%"
-                height="100%"
-                className={classNames(
-                  //Position
-                  'absolute',
-
-                  //Animation
-                  isOpen && 'icon-hide',
-                  !isOpen && animationEnd && 'icon-show',
-                )}
-              />
-              <IconCross
-                width="100%"
-                height="100%"
-                className={classNames(
-                  //Position
-                  'absolute',
-
-                  //Effect
-                  'opacity-0',
-
-                  //Animation
-                  isOpen && 'icon-show',
-                  !isOpen && animationEnd && 'icon-hide',
-                )}
-              />
+            <div data-open={isOpen} data-animation={animationEnd} className={styles.popup__button}>
+              <IconBurger width="100%" height="100%" className={styles['popup__button-svg']} />
+              <IconCross width="100%" height="100%" className={styles['popup__button-svg']} />
             </div>
           )
         }
@@ -107,20 +68,10 @@ const Popup = forwardRef<IPopuRefProps, IPoupOwnProps>(function Popup(
       {isOpen && (
         <Portal id={portalProps.id} styles={portalProps.styles}>
           <div
+            data-open={isOpen}
+            data-animation={animationEnd}
             ref={containerRef}
-            className={classNames(
-              //Custom class name
-              isOpen && !animationEnd ? 'show' : 'hide',
-
-              //Size
-              'w-full h-full',
-
-              //Effect
-              'backdrop-blur-custom',
-
-              //Visibility
-              isOpen && 'pointer-events-auto',
-            )}
+            className={styles.popup__content}
           >
             <Scroll>{children}</Scroll>
           </div>

@@ -17,6 +17,7 @@ import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { SelectCustom, TSelectCustomData } from './components';
+import styles from './styles.module.scss';
 import { TDiv } from './types/component';
 
 export function Filters({ className, ...props }: TDiv) {
@@ -123,7 +124,7 @@ export function Filters({ className, ...props }: TDiv) {
       }
 
       if (key && key === 'q' && value) {
-        const matches = value.match(/(\w+)|(\+\w:)(\w+)/gi);
+        const matches = value.match(/([\w,\W]+)|(\+[\w,\W]:)([\w,\W]+)/gi);
 
         matches && matches[2] && dispatch(setCategory(matches[2] as ECategories));
         matches && matches[0] && dispatch(setSearch(matches[0]));
@@ -137,46 +138,18 @@ export function Filters({ className, ...props }: TDiv) {
         //Custom class name
         className,
 
-        //Flex
-        'flex items-center justify-end flex-grow gap-x-1 gap-y-4 flex-wrap-reverse',
-        //Mobile big
-        's:items-start s:flex-col-reverse',
-
-        //Size
-        'w-full',
+        styles.filter,
       )}
       {...props}
     >
-      <div
-        className={classNames(
-          //Flex
-          'flex items-center justify-end flex-grow',
-          //Mobile big
-          's:flex-grow-0',
-
-          //Size
-          'max-w-[440px] min-w-[300px]',
-          //Mobile big
-          's:min-w-full s:max-w-full',
-        )}
-      >
+      <div className={styles.filter__wrapper}>
         <SelectCustom
           portalId="select-categories"
           placeholder="Categories:"
           activeItem={activeCategory}
           data={categories}
           onClick={handleSelectCategory}
-          className={classNames(
-            //Flex
-            'flex-shrink',
-            //Mobile big
-            's:flex-grow',
-
-            //Size
-            'w-full max-w-[220px]',
-            //Mobile big
-            's:max-w-full',
-          )}
+          className={styles.filter__select}
         />
 
         <SelectCustom
@@ -185,17 +158,7 @@ export function Filters({ className, ...props }: TDiv) {
           activeItem={activeSorting}
           data={sortingBy}
           onClick={handleSelectSorting}
-          className={classNames(
-            //Flex
-            'flex-shrink',
-            //Mobile big
-            's:flex-grow',
-
-            //Size
-            'w-full max-w-[220px]',
-            //Mobile big
-            's:max-w-full',
-          )}
+          className={styles.filter__select}
         />
       </div>
 
@@ -208,12 +171,7 @@ export function Filters({ className, ...props }: TDiv) {
         iconSearch={<IconSearch width={16} height={16} />}
         value={searchParams.get('q')?.replace(/\+subject:\w+/gi, '') ?? ''}
         name="search"
-        className={classNames(
-          //Size
-          'w-[220px]',
-          //Mobile big
-          's:w-full',
-        )}
+        className={styles.filter__search}
         onSubmit={handleSubmit}
         onChange={handleChange}
       />

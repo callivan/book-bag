@@ -1,48 +1,21 @@
 import classNames from 'classnames';
 
+import styles from './styles.module.scss';
 import { INadgeProps } from './types/component';
 
 export function Badge({ label, size = 'md', className, ...props }: INadgeProps) {
-  const sizeMd = size === 'md';
-
   return (
     <div
+      data-size={size}
       className={classNames(
         //Custom class name
         className,
 
-        //Flex
-        'flex items-center',
-
-        //Color
-        'bg-gray-medium',
-
-        //Border
-        'rounded-full',
-
-        //Indent
-        sizeMd ? 'px-2 py-1' : 'px-1 py-[4px]',
-
-        //Size
-        'max-w-max w-full h-max',
-        sizeMd ? 'min-w-[38px] min-h-[38px]' : 'min-w-[24px] min-h-[24px]',
+        styles.bage,
       )}
       {...props}
     >
-      <span
-        className={classNames(
-          //Font
-          sizeMd
-            ? 'font-regular text-body1 text-center break-words whitespace-pre-wrap'
-            : 'font-regular text-caption1 text-center break-words whitespace-pre-wrap',
-
-          //Color
-          'text-black-medium',
-
-          //Size
-          'w-full',
-        )}
-      >
+      <span data-size={size} className={styles.bage__text}>
         {label}
       </span>
     </div>

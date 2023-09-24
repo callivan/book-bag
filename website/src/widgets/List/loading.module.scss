@@ -1,0 +1,7 @@
+.loading {
+    @apply grid grid-cols-list auto-rows-list place-content-around gap-3;
+    //Tablet small
+    @apply md:gap-2;
+
+    @apply w-full min-h-full max-h-max;
+}

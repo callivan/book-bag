@@ -1,0 +1,18 @@
+.loading {
+    @apply w-full h-max;
+    @apply flex items-baseline justify-between gap-1;
+    @apply border-t border-solid border-gray-clean;
+    @apply pt-2;
+
+    &__counter {
+        @apply max-w-[200px] w-full h-[22px];
+        //Mobile bi
+        @apply s:h-[18px];
+    }
+
+    &__load-more {
+        @apply max-w-[150px] w-full h-[40px];
+        //Mobile big
+        @apply s:h-[30px];
+    }
+}

@@ -1,1 +1,0 @@
-export { ErrorLoading } from './Loading';

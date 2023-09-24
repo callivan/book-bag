@@ -1,6 +1,7 @@
 import { Badge, Img, Scroll, Text } from '@shared/ui';
 import classNames from 'classnames';
 
+import styles from './styles.module.scss';
 import { TCardProps } from './types/component';
 
 export function Card({ img, title, authors, category, className, ...props }: TCardProps) {
@@ -10,76 +11,26 @@ export function Card({ img, title, authors, category, className, ...props }: TCa
         //Custom class name
         className,
 
-        //Indent
-        'p-1',
-
-        //Effect
-        'backdrop-blur-custom',
-
-        //Color
-        'bg-gray-bg',
-
-        //Size
-        'w-full h-full',
-
-        //Flex
-        'flex flex-col gap-1',
+        styles.card,
       )}
       {...props}
     >
-      <Img
-        src={img.basic}
-        placeholder={img.placeholder}
-        alt="Book"
-        className="w-[224px] h-[248px]"
-      />
+      <Img src={img.basic} placeholder={img.placeholder} alt="Book" className={styles.card__img} />
 
-      <div
-        className={classNames(
-          //Flex
-          'flex flex-col justify-between flex-grow flex-shrink gap-1',
-        )}
-      >
-        <Text
-          as="h3"
-          className={classNames(
-            //Font
-            'text-body1 tracking-[5%] text-left',
-
-            //Size
-            'w-full h-max',
-          )}
-        >
+      <div className={styles.card__wrapper}>
+        <Text as="h3" className={styles.card__title}>
           {title}
         </Text>
 
-        <div
-          className={classNames(
-            //Flex
-            'flex flex-col gap-2',
-
-            //Size
-            'w-full h-max',
-          )}
-        >
+        <div className={styles.card__info}>
           {authors && (
-            <div
-              className={classNames(
-                //Flex
-                'flex flex-col flex-wrap flex-grow flex-shrink gap-[4px]',
-              )}
-            >
-              <Text className="text-body2 text-left w-full">Written by:</Text>
+            <div className={styles.card__written}>
+              <Text className={styles['card__written-title']}>Written by:</Text>
 
-              <Scroll
-                className={classNames(
-                  //Size
-                  'max-h-[80px] h-max',
-                )}
-              >
+              <Scroll className={styles['card__written-authors']}>
                 <>
                   {authors.map((author, index) => (
-                    <Text className="text-body2" key={index}>
+                    <Text className={styles['card__written-text']} key={index}>
                       {author}
                     </Text>
                   ))}
@@ -88,9 +39,7 @@ export function Card({ img, title, authors, category, className, ...props }: TCa
             </div>
           )}
 
-          {category && (
-            <Badge size="sm" label={category} className="flex-grow flex-shrink-0 max-w-full" />
-          )}
+          {category && <Badge size="sm" label={category} className={styles.card__category} />}
         </div>
       </div>
     </div>

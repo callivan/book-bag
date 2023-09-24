@@ -60,12 +60,12 @@ export default {
       },
       keyframes: {
         movingFromRight: {
-          '0%': { transform: 'translateX(16px)' },
-          '100%': { transform: 'translateX(0px)' },
+          '0%': { transform: 'translateX(16px)', opacity: 0 },
+          '100%': { transform: 'translateX(0px)', opacity: 1 },
         },
         movingLeft: {
-          '0%': { transform: 'translateX(0px)' },
-          '100%': { transform: 'translateX(-16px)' },
+          '0%': { transform: 'translateX(0px)', opacity: 1 },
+          '100%': { transform: 'translateX(-16px)', opacity: 0 },
         },
         ping: {
           '75%, 100%': {

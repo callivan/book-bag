@@ -2,9 +2,10 @@ import { IPopuRefProps } from '@entities';
 import { Filters } from '@features';
 import { Img } from '@shared/ui';
 import { useMatchMedia } from '@shared/utils';
-import classNames from 'classnames';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+
+import styles from './styles.module.scss';
 
 const Popup = lazy(() => import('../../entities/Popup'));
 
@@ -30,15 +31,7 @@ export function Header() {
   }, [containerRef.current, mobileSmall]);
 
   return (
-    <header
-      ref={containerRef}
-      className={classNames(
-        //Flex
-        'flex items-stretch justify-center gap-1',
-        //Mobile big
-        's:items-center',
-      )}
-    >
+    <header ref={containerRef} className={styles.header}>
       <Img
         src="/logo/logo.png"
         placeholder="/logo/logo-preview.png"
@@ -47,34 +40,18 @@ export function Header() {
           { url: '/logo/logo-sm.png', viewSize: 300 },
           { url: '/logo/logo.png', viewSize: 595 },
         ]}
-        className={classNames(
-          //Size
-          'w-[82px] h-[54px]',
-          //Mobile big
-          's:w-[62px] s:h-[40px]',
-
-          //Flex
-          'flex-shrink-0',
-        )}
+        className={styles.header__logo}
       />
 
       {!pathname.replace(/\//gi, '') ? (
         <>
-          <Filters className="s:hidden" />
+          <Filters className={styles.header__filter} />
 
           <Suspense>
             <Popup
               ref={popupRef}
               buttonProps={{
-                className: classNames(
-                  //Visibility
-                  'hidden',
-                  //Mobile big
-                  's:block',
-
-                  //Indent
-                  'ml-auto',
-                ),
+                className: styles.header__popup,
               }}
               portalProps={{
                 id: 'popup-portal',
@@ -85,21 +62,7 @@ export function Header() {
                 }px`,
               }}
             >
-              <div
-                className={classNames(
-                  //Flex
-                  'flex flex-col gap-4',
-
-                  //Color
-                  'bg-gray-bg',
-
-                  //Size
-                  'w-full h-full',
-
-                  //Indent
-                  'py-2',
-                )}
-              >
+              <div className={styles['header__popu-content']}>
                 <Filters />
               </div>
             </Popup>

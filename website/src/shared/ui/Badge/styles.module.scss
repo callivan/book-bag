@@ -1,0 +1,30 @@
+.bage {
+    @apply flex items-center;
+    @apply bg-gray-medium;
+    @apply rounded-full;
+    @apply max-w-max w-full h-max;
+
+    &[data-size='sm'] {
+        @apply px-1 py-[4px];
+        @apply min-w-[24px] min-h-[24px];
+    }
+
+    &[data-size='md'] {
+        @apply px-2 py-1;
+        @apply min-w-[38px] min-h-[38px];
+    }
+
+    &__text {
+        @apply text-black-medium;
+        @apply font-regular text-center break-words whitespace-pre-wrap;
+        @apply w-full;
+
+        &[data-size='sm'] {
+            @apply text-caption1;
+        }
+
+        &[data-size='md'] {
+            @apply text-body1;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+.empty {
+    @apply w-full h-full;
+    @apply flex justify-center items-center;
+    @apply p-2;
+
+    &__text {
+        @apply text-h2 text-center;
+    }
+}

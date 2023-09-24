@@ -1,0 +1,44 @@
+.card {
+    @apply p-1;
+    @apply backdrop-blur-custom;
+    @apply bg-gray-bg;
+    @apply w-full h-full;
+    @apply flex flex-col gap-1;
+
+    &__img {
+        @apply w-[224px] h-[248px];
+    }
+
+    &__wrapper {
+        @apply flex flex-col justify-between flex-grow flex-shrink gap-1;
+    }
+
+    &__title {
+        @apply text-body1 tracking-[5%] text-left;
+        @apply w-full h-max;
+    }
+
+    &__info {
+        @apply flex flex-col gap-2;
+        @apply w-full h-max;
+    }
+    &__written {
+        @apply flex flex-col flex-wrap flex-grow flex-shrink gap-[4px];
+
+        &-title {
+            @apply text-body2 text-left w-full;
+        }
+
+        &-authors {
+            @apply max-h-[80px] h-max;
+        }
+
+        &-text {
+            @apply text-body2;
+        }
+    }
+
+    &__category {
+        @apply flex-grow flex-shrink-0 max-w-full;
+    }
+}

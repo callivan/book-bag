@@ -17,11 +17,12 @@ import {
 } from '@store';
 import { IBookAttributes } from '@types';
 import { FooterLoading, ListLoading } from '@widgets';
-import classNames from 'classnames';
 import { lazy, Suspense, useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
+
+import styles from './styles.module.scss';
 
 const List = lazy(() => import('../../widgets/List/List'));
 const Footer = lazy(() => import('../../widgets/Footer/Footer'));
@@ -85,31 +86,8 @@ export default function Books() {
         <meta name="twitter:title" content={`Book bag | ${title}`} />
       </Helmet>
 
-      <div
-        className={classNames(
-          //Border
-          'border border-solid border-gray-dark',
-
-          //Size
-          'w-full h-full',
-        )}
-      >
-        <div
-          className={classNames(
-            //Flex
-            'flex flex-col gap-4',
-            //Mobile big
-            's:gap-3',
-
-            //Size
-            'w-full max-w-[1440px] h-full',
-
-            //Indent
-            'px-2 pt-4 pb-2 mx-auto',
-            //Mobile big
-            's:pt-3',
-          )}
-        >
+      <div className={styles.books}>
+        <div className={styles.books__wrapper}>
           <Scroll>
             <>
               <ListElement data={books} onReset={handleReset} />
@@ -117,12 +95,8 @@ export default function Books() {
               <EmptyElement search={search} isPending={isPending} data={books} />
             </>
           </Scroll>
-          <div
-            className={classNames(
-              //Size
-              'w-full h-max',
-            )}
-          >
+
+          <div className={styles.books__footer}>
             <FooterElement
               count={total}
               isPending={isPending}

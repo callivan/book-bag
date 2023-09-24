@@ -1,0 +1,111 @@
+@keyframes hide-icon {
+    0% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-16px);
+        opacity: 0;
+    }
+}
+
+@keyframes show-icon {
+    0% {
+        transform: translateX(16px);
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes hide {
+    0% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    90% {
+        transform: translateX(-16px);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: translateX(16px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+.popup {
+    &__button {
+        @apply relative;
+        @apply flex items-center justify-center;
+        @apply w-full h-full;
+        @apply overflow-hidden;
+
+        &-svg {
+            @apply absolute;
+        }
+
+        &[data-open='false'] > &-svg:first-of-type {
+            opacity: 1;
+        }
+
+        &[data-open='false'] > &-svg:last-of-type {
+            opacity: 0;
+        }
+
+        &[data-open='true'][data-animation='false'] > &-svg:first-of-type,
+        &[data-animation='true'] > &-svg:last-of-type {
+            animation: hide-icon 0.2s ease-in forwards;
+        }
+
+        &[data-open='true'][data-animation='false'] > &-svg:last-of-type,
+        &[data-animation='true'] > &-svg:first-of-type {
+            animation: show-icon 0.2s ease-in forwards;
+        }
+    }
+
+    &__content {
+        @apply w-full h-full;
+        @apply backdrop-blur-custom;
+
+        &[data-open='false'] {
+            @apply pointer-events-none;
+        }
+
+        &[data-open='true'] {
+            @apply opacity-0;
+            @apply pointer-events-auto;
+        }
+
+        &[data-open='true'][data-animation='true'] {
+            animation: hide 0.2s ease-in forwards;
+        }
+
+        &[data-open='true'][data-animation='false'] {
+            animation: show 0.2s ease-in forwards;
+        }
+    }
+}

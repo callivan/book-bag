@@ -1,59 +1,12 @@
-import classNames from 'classnames';
+import styles from './styles.module.scss';
 
 export function Wrapper({ children }: { children: React.ReactNode }) {
-  const BLURE_SIDE = (
-    <div
-      className={classNames(
-        //Position
-        'relative',
-
-        //Size
-        `w-3 h-full`,
-        //Mobile big
-        's:w-2',
-        //Mobile small
-        'xs:w-1',
-
-        //Flex
-        'flex-shrink-0',
-
-        //Effect
-        'backdrop-blur-custom',
-
-        //Color
-        'bg-gray-bg',
-
-        //Layers
-        'z-[-1]',
-      )}
-    />
-  );
+  const BLURE_SIDE = <div className={styles.blur} />;
 
   return (
-    <main
-      className={classNames(
-        //Positiom
-        'relative isolate',
-
-        //Flex
-        'flex',
-
-        //Size
-        'w-full h-full',
-
-        //Visibility
-        'overflow-hidden',
-      )}
-    >
+    <main className={styles.wrapper}>
       {BLURE_SIDE}
-      <section
-        className={classNames(
-          //Flex
-          'flex-grow',
-        )}
-      >
-        {children}
-      </section>
+      <section className={styles.wrapper__section}>{children}</section>
       {BLURE_SIDE}
     </main>
   );

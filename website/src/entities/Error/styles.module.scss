@@ -1,0 +1,25 @@
+.error {
+    @apply w-full h-full;
+    @apply flex flex-col justify-center items-center gap-2;
+    @apply p-2 pb-3;
+
+    &__title {
+        @apply font-medium text-h2 text-center;
+        @apply mt-auto;
+    }
+
+    &__text {
+        @apply text-body1 text-center;
+    }
+
+    &__reset-md {
+        //Mobile big
+        @apply s:hidden;
+    }
+
+    &__reset-sm {
+        @apply hidden;
+        //Mobile big
+        @apply s:block;
+    }
+}

@@ -1,0 +1,31 @@
+.header {
+    @apply flex items-stretch justify-center gap-1;
+    //Mobile big
+    @apply s:items-center;
+
+    &__logo {
+        @apply w-[82px] h-[54px];
+        //Mobile big
+        @apply s:w-[62px] s:h-[40px];
+
+        @apply flex-shrink-0;
+    }
+
+    &__filter {
+        @apply s:hidden;
+    }
+
+    &__popup {
+        @apply ml-auto;
+        @apply hidden;
+        //Mobile big
+        @apply s:block;
+    }
+
+    &__popup-content {
+        @apply flex flex-col gap-4;
+        @apply bg-gray-bg;
+        @apply w-full h-full;
+        @apply py-2;
+    }
+}

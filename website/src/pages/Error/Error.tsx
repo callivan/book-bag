@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { Wrapper } from './components';
+import styles from './styles.module.scss';
 import { TErrorProps } from './types/component';
 
 export default function Error({ className, text, ...props }: TErrorProps) {
@@ -14,106 +15,41 @@ export default function Error({ className, text, ...props }: TErrorProps) {
           //Custom class name
           className,
 
-          //Size
-          'w-full h-full',
-
-          //Flex
-          'flex flex-col gap-2 items-center justify-center',
-
-          //Indent
-          'p-2',
-
-          //Visibility
-          'overflow-hidden',
+          styles.error,
         )}
         {...props}
       >
         <Img
-          src="/bg/bg-desktop.png"
-          placeholder="/bg/bg-preview.png"
+          src="/logo/logo.png"
+          placeholder="/logo/logo-preview.png"
           responsive={[
-            { url: '/bg/bg-mobile.png', viewSize: 595 },
-            { url: '/bg/bg-tablet.png', viewSize: 1024 },
-            { url: '/bg/bg-desktop.png', viewSize: 1440 },
+            { url: '/logo/logo-sm.png', viewSize: 595 },
+            { url: '/logo/logo.png', viewSize: 1024 },
           ]}
-          className={classNames(
-            //Size
-            'w-[82px] h-[54px]',
-            //Mobile big
-            's:w-[62px] s:h-[40px]',
-
-            //Flex
-            'flex-shrink-0',
-
-            //Indent
-            'mb-auto',
-          )}
+          className={styles.error__bg}
         />
 
-        <Text
-          className={classNames(
-            //Font
-            'font-medium text-h3 text-center',
+        <Text className={styles.error__title}>Ooops!!!</Text>
+        <Text className={styles.error__text}>{text}</Text>
 
-            //Size
-            'w-full',
-          )}
-        >
-          Ooops!!!
-        </Text>
-        <Text
-          className={classNames(
-            //Font
-            'font-medium text-h3 text-center',
-
-            //Size
-            'w-full',
-          )}
-        >
-          {text}
-        </Text>
-
-        <div
-          className={classNames(
-            //Indent
-            'mt-auto',
-          )}
-        >
-          <Link to="/" replace>
-            <div
-              className={classNames(
-                //Visibility
-                //Mobile big
-                's:hidden',
-              )}
-            >
-              <Button
-                size="md"
-                textSide="right"
-                icon={<IconArrow width="100%" height="100%" className="rotate-[135deg]" />}
-              >
-                Back home
-              </Button>
-            </div>
-
-            <div
-              className={classNames(
-                //Visibility
-                'hidden',
-                //Mobile big
-                's:block',
-              )}
-            >
-              <Button
-                size="sm"
-                textSide="right"
-                icon={<IconArrow width="100%" height="100%" className="rotate-[135deg]" />}
-              >
-                Back
-              </Button>
-            </div>
-          </Link>
-        </div>
+        <Link to="/" replace className={styles.error__link}>
+          <Button
+            size="md"
+            textSide="right"
+            icon={<IconArrow width="100%" height="100%" className={styles.error__icon} />}
+            className={styles['error__back-md']}
+          >
+            Back home
+          </Button>
+          <Button
+            size="sm"
+            textSide="right"
+            icon={<IconArrow width="100%" height="100%" className={styles.error__icon} />}
+            className={styles['error__back-sm']}
+          >
+            Back
+          </Button>
+        </Link>
       </div>
     </Wrapper>
   );

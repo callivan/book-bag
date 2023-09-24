@@ -1,0 +1,45 @@
+.error {
+    @apply w-full h-full;
+    @apply flex flex-col gap-2 items-center justify-center;
+    @apply p-2;
+    @apply overflow-hidden;
+
+    &__bg {
+        @apply w-[82px] h-[54px];
+        //Mobile big
+        @apply s:w-[62px] s:h-[40px];
+
+        @apply flex-shrink-0;
+        @apply mb-auto;
+    }
+
+    &__title {
+        @apply font-medium text-h2 text-center;
+        @apply w-full;
+    }
+
+    &__text {
+        @apply font-medium text-body1 text-center;
+        @apply w-full;
+    }
+
+    &__link {
+        @apply mt-auto;
+    }
+
+    &__back-md {
+        @apply flex;
+        //Mobile big
+        @apply s:hidden;
+    }
+
+    &__back-sm {
+        @apply hidden;
+        //Mobile big
+        @apply s:flex;
+    }
+
+    &__icon {
+        @apply rotate-[135deg];
+    }
+}
