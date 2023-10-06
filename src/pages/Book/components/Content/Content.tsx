@@ -18,26 +18,14 @@ export default function Content({ book: { volumeInfo }, onBack }: IContentProps)
 
       <div className={styles.content__wrapper}>
         <Img
-          src={volumeInfo.imageLinks?.thumbnail ?? '/book/default-desktop.png'}
-          placeholder={volumeInfo.imageLinks?.smallThumbnail ?? '/book/default-preview.png'}
-          responsive={[
-            {
-              url: volumeInfo.imageLinks?.thumbnail ?? '/book/default-thumbnail.png',
-              viewSize: 128,
-            },
-            {
-              url: volumeInfo.imageLinks?.thumbnail ?? '/book/default-mobile.png',
-              viewSize: 395,
-            },
-            {
-              url: volumeInfo.imageLinks?.thumbnail ?? '/book/default-tablet.png',
-              viewSize: 1024,
-            },
-            {
-              url: volumeInfo.imageLinks?.thumbnail ?? '/book/default-desktop.png',
-              viewSize: 1440,
-            },
-          ]}
+          src={
+            volumeInfo.imageLinks?.thumbnail.replace(/http/gi, 'https') ??
+            '/book/default-desktop.png'
+          }
+          placeholder={
+            volumeInfo.imageLinks?.smallThumbnail.replace(/http/gi, 'https') ??
+            '/book/default-preview.png'
+          }
           alt={`Book ${volumeInfo.title}`}
           className={styles.content__img}
         />

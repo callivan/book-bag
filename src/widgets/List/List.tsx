@@ -12,8 +12,8 @@ export default function List({ items }: IListProps) {
           <Link to={`/${id}`}>
             <Card
               img={{
-                basic: imageLinks?.thumbnail ?? '/book/default-thumbnail.png',
-                placeholder: imageLinks?.smallThumbnail ?? '/book/default-preview.png',
+                basic: imageLinks?.thumbnail.replace(/http/gi, 'https') ?? '/book/default-thumbnail.png',
+                placeholder: imageLinks?.smallThumbnail.replace(/http/gi, 'https') ?? '/book/default-preview.png',
               }}
               title={title}
               authors={authors}
