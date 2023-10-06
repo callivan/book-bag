@@ -31,7 +31,7 @@ export function SelectCustom({
         <button onClick={() => onClick && onClick(data)} className={styles.select__button}>
           <Text>{data.name}</Text>
 
-          <IconCheck data-active={activeItem?.id !== data.id} className={styles.select__icon} />
+          <IconCheck data-active={activeItem?.id === data.id} className={styles.select__icon} />
         </button>
       )}
       {...props}
